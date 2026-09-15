@@ -4,7 +4,7 @@ import { pool } from "./config/db";
 import multer from "multer";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = Number(process.env.PORT) || 4000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 app.use(cors());

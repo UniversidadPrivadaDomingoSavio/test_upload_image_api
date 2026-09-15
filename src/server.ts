@@ -4,10 +4,10 @@ import { pool } from "./config/db";
 import multer from "multer";
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors());
 app.use(express.json());
 
 /*
@@ -193,6 +193,6 @@ async function testDatabaseConnection() {
 
 testDatabaseConnection();
 */
-app.listen(PORT, () => {
-  console.log(`API funcionando en http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`API funcionando en puerto ${PORT}`);
 });
